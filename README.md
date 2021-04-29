@@ -9,8 +9,8 @@ Each test contains a set of directives, without a signifigant order. The tests c
 ### Supported Directives:
 Name|Description
 --|--
-`run`/`runner`/`pre`/`prefix`|The first part of the executed command
-`arg`/`argument`/`args`|The second part of the executed command
+`command`| The command to execute. Should contain `{}` where the arguments should go
+`args` | The arguments to the command. Will replace the `{}` in the command when executed
 `postfix`/`post`|The last part of the executed command
 `name`/`test` | The name of the test
 `desc` | The description, more information about the test
