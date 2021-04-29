@@ -15,7 +15,9 @@ Name|Description
 `desc` | The description, more information about the test
 `stdin` | The STDIN to pass to the test program
 `setup` | Bash commands to run before executing the test
-`file <filename>` | Create a file who's content is the passed `<value>`, named with the `<filename>`
+`file <filename>` | Create a file who's content is the passed `<value>`, named with the `<filename>`.
+
+You can have multiple `file`s.
 
 
 All of these are followed by a `<value>`, which means that it can either be a colon, then the rest of the text (trimmed) to the end of the line
