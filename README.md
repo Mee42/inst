@@ -115,7 +115,7 @@ Or to do custom predicates
 int main() {
     return sizeof(int);
 }
-# python assert exitcode: exitCode in {4, 8}
+# python assert exitcode: it in {4, 8}
 ```
 
 
