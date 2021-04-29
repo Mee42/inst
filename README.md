@@ -6,19 +6,20 @@ An integration testing library for CLI programs
 ### supported directives:
 Name|Description
 --|--
-`run`/`runner`|The first part of the executed command
+`run`/`runner`/`pre`/`prefix`|The first part of the executed command
 `arg`/`argument`/`args`|The second part of the executed command
+`postfix`/`post`|The last part of the executed command
 `name`/`test` | The name of the test
 `desc` | The description, more information about the test
 `stdin` | The STDIN to pass to the test program
-`pre` | Bash commands to run before executing the etst
+`setup` | Bash commands to run before executing the test
 
 
-all of these are followed by a <value>, whichmeans that it can either be a colon, then the rest of the text (trimmed) to the end of the line
+All of these are followed by a `<value>`, which means that it can either be a colon, then the rest of the text (trimmed) to the end of the line
 or a single hyphen (after trimming). If it's a single hyphen, then it takes the text content of all lines
-until the next line that matches directiveStart
+until the next line that's a directive (`#`, by default)
 
-Several of these options support default values. You can set them with:
+Several of these options support default values, such as `run`, `args`, `prefix`, `postfix`, and `setup`. You can set them with:
 
 ```
 # default <option name> <value>
@@ -83,7 +84,7 @@ Name|Description
 `regex`|The expected value will be used as a regex, and the test will pass if the real value matches the regex
 `range`|The real value is parsed as an numbber, the test passes if it fits within the range of the expected value.<br/>The syntax is `(N<x)?<N)` where `N` can be any number, and `<` can be any range operation (`<`, `<=`, `>`, `>=`). <br/>`x` is a literal here to make `0<x<1` easier to read
 `time`|Like `range`, but the numbers need to be postfixed with a time unit.
-
+`python`|Launch a python interpreter and evaluate an expression (where `it` is a variable containing the data)
 
 Supported Time units|Prefix
 ---|---
@@ -103,3 +104,26 @@ Here's an example test using `time`:
 # assert time: 1900ms < x < 2100ms
 ```
 
+Or to do custom predicates
+```bash
+# pre: gcc -x c - 
+# post: && ./a.out
+# stdin - 
+int main() {
+    return sizeof(int);
+}
+# python assert exitcode: exitCode in {4, 8}
+```
+
+
+You can also change the directive prefix. It's suggested you pick something that compiles in your language, so that you can get syntax highlighting support.
+`///` might be good for things like C:
+```c
+/// pre: gcc -x c -
+/// post && ./a.out
+/// stdin -
+int main() {
+     return sizeof(int);
+}
+/// python assert exitcode: it in {4, 8}
+```
