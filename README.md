@@ -11,7 +11,6 @@ Name|Description
 --|--
 `command`| The command to execute. Should contain `{}` where the arguments should go
 `args` | The arguments to the command. Will replace the `{}` in the command when executed
-`postfix`/`post`|The last part of the executed command
 `name`/`test` | The name of the test
 `desc` | The description, more information about the test
 `stdin` | The STDIN to pass to the test program
@@ -22,7 +21,7 @@ All of these are followed by a `<value>`, which means that it can either be a co
 or a single hyphen (after trimming). If it's a single hyphen, then it takes the text content of all lines
 until the next line that's a directive (`#`, by default)
 
-Several of these options support default values, such as `run`, `args`, `prefix`, `postfix`, and `setup`. You can set them with:
+Several of these options support default values, such as `command`, `args`, and `setup`. You can set them with:
 
 ```
 # default <option name> <value>
