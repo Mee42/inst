@@ -1,9 +1,12 @@
 # inst
 An integration testing library for CLI programs
 
+A `*.inst.*` file contains a set of tests, seperated by the (configurable) test deliminator.
+By default, it is `^={4,}$`.
 
+Each test contains a set of directives, without a signifigant order. The tests can be executed on the command line, with options to only rerun changed or failed tests.
 
-### supported directives:
+### Supported Directives:
 Name|Description
 --|--
 `run`/`runner`/`pre`/`prefix`|The first part of the executed command
