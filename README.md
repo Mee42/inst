@@ -32,6 +32,7 @@ Several of these options support default values, such as `command`, `args`,`file
 and unset them with
 ```
 # unset default <option name>
+# unset default file <filename>
 ```
 Here's some examples:
 ```bash
