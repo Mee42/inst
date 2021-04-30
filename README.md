@@ -137,5 +137,6 @@ int main() {
 
 
 
-#### TODO:
+#### TODO (these are things that need to be added to the spec):
 - duration limits
+- "contains" string matcher type
